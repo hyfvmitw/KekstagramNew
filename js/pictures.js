@@ -157,7 +157,7 @@ let picturesArr = function (usersPhotoArr) {
 }
 picturesArr(usersPhotoArr)
 
-document.querySelector('.big-picture').classList.remove('hidden')
+// document.querySelector('.big-picture').classList.remove('hidden')
 document.querySelector('.social__comment-count').classList.add('visually-hidden')
 document.querySelector('.social__comments-loader').classList.add('visually-hidden')
 
