@@ -157,17 +157,38 @@ let picturesArr = function (usersPhotoArr) {
 }
 picturesArr(usersPhotoArr)
 
-// document.querySelector('.big-picture').classList.remove('hidden')
 document.querySelector('.social__comment-count').classList.add('visually-hidden')
 document.querySelector('.social__comments-loader').classList.add('visually-hidden')
-
-document.querySelector('.big-picture__img').src = usersPhotoArr[0].url
 document.querySelector('.comments-count').textContent = usersPhotoArr[0].comments.length
 document.querySelector('.likes-count').textContent = usersPhotoArr[0].likes
 document.querySelector('.social__caption').textContent = usersPhotoArr[0].description
 
+let pictureList = document.querySelectorAll('.picture__img')
+let bigPictureImg = document.querySelector('.big-picture__img>img')
+let bigPicture = document.querySelector('.big-picture')
 
+for (let i = 0; i < pictureList.length; i++) {
+  pictureList[i].addEventListener('click', function () {
+    bigPictureImg.src = usersPhotoArr[i].url
+    bigPictureImg.alt = '#'
+    bigPicture.classList.remove('hidden')
+  })
+}
+let closeBigPictureBtn = bigPicture.querySelector('.big-picture__cancel')
+console.log(closeBigPictureBtn);
 
+function closeBigPicture() {
+  bigPicture.classList.add('hidden')
+}
+
+closeBigPictureBtn.addEventListener('click', closeBigPicture) 
+document.addEventListener('keydown', function(evt) {
+  // Проверяем, что код клавиши равен 'Escape'
+  if (evt.key === 'Escape') {
+    // Код отсюда выполнится только при нажатии ESC
+    closeBigPicture()
+  }
+})
 
 
 
