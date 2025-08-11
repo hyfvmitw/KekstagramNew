@@ -163,19 +163,33 @@ document.querySelector('.comments-count').textContent = usersPhotoArr[0].comment
 document.querySelector('.likes-count').textContent = usersPhotoArr[0].likes
 document.querySelector('.social__caption').textContent = usersPhotoArr[0].description
 
-let pictureList = document.querySelectorAll('.picture__img')
+let picturesList = document.querySelectorAll('.picture__img')
 let bigPictureImg = document.querySelector('.big-picture__img>img')
 let bigPicture = document.querySelector('.big-picture')
 
-for (let i = 0; i < pictureList.length; i++) {
-  pictureList[i].addEventListener('click', function () {
+for (let i = 0; i < picturesList.length; i++) {
+  picturesList[i].addEventListener('click', function () {
     bigPictureImg.src = usersPhotoArr[i].url
     bigPictureImg.alt = '#'
     bigPicture.classList.remove('hidden')
   })
 }
+/* 
+var thumbnails = document.querySelectorAll('.gallery__picture-preview');
+var fullPicture = document.querySelector('.full-picture');
+var addThumbnailClickHandler = function (thumbnail, photo) {
+  thumbnail.addEventListener('click', function () {
+    fullPicture.src = photo;
+  });
+};
+for (var i = 0; i < thumbnails.length; i++) {
+  addThumbnailClickHandler(thumbnails[i], pictures[i]);
+}
+
+*/
+
+
 let closeBigPictureBtn = bigPicture.querySelector('.big-picture__cancel')
-console.log(closeBigPictureBtn);
 
 function closeBigPicture() {
   bigPicture.classList.add('hidden')
