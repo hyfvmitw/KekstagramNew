@@ -25,7 +25,7 @@ let usersPhotoArr = [
   { url: 'photos/24.jpg', likes: 181, comments: [], description: 'Затусили с друзьями на море' },
   { url: 'photos/25.jpg', likes: 41, comments: [], description: 'Не обижайте всех словами...' }
 ]
-console.log(usersPhotoArr);
+// console.log(usersPhotoArr);
 
 /* --- LIKES --- */
 
@@ -175,16 +175,6 @@ for (let i = 0; i < picturesList.length; i++) {
   })
 }
 /* 
-var thumbnails = document.querySelectorAll('.gallery__picture-preview');
-var fullPicture = document.querySelector('.full-picture');
-var addThumbnailClickHandler = function (thumbnail, photo) {
-  thumbnail.addEventListener('click', function () {
-    fullPicture.src = photo;
-  });
-};
-for (var i = 0; i < thumbnails.length; i++) {
-  addThumbnailClickHandler(thumbnails[i], pictures[i]);
-}
 
 */
 
@@ -204,6 +194,26 @@ document.addEventListener('keydown', function(evt) {
   }
 })
 
+let uploadFile = document.querySelector('#upload-file')
+let imgUploadOverlay = document.querySelector('.img-upload__overlay')
+let imgUploadCancel = imgUploadOverlay.querySelector('.img-upload__cancel')
 
+console.log(imgUploadCancel);
 
+uploadFile.addEventListener('change', function(){
+  imgUploadOverlay.classList.remove('hidden')
+})
 
+function imgUploadClose(){
+  imgUploadOverlay.classList.add('hidden')
+  uploadFile.value = ''
+}
+
+imgUploadCancel.addEventListener('click', imgUploadClose)
+document.addEventListener('keydown', function(evt) {
+  // Проверяем, что код клавиши равен 'Escape'
+  if (evt.key === 'Escape') {
+    // Код отсюда выполнится только при нажатии ESC
+    imgUploadClose()
+  }
+})
